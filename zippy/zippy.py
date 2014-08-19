@@ -32,7 +32,6 @@ def zip_dir(source, destination):
         for root, dirs, files in os.walk(source):
             for fil in files:
                 if fil[0] != '.':
-                    print (fil)
                     zf.write(os.path.join(root, fil))
     finally:
         zf.close()
@@ -84,10 +83,7 @@ def parse():
         choice = input("{} already exists. Do you want to overwrite? "
                        "(y/n)? ".format(args.destination))
         if choice == 'y':
-            if os.remove(args.destination):
-                print ("removed!!!!")
-            else:
-                print ("Not remove!!!!!! ")
+            os.remove(args.destination)
             zippy(args.source, args.destination)
         elif choice == 'n':
             print ("Try another name")
