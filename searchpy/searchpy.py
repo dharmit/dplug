@@ -90,14 +90,18 @@ def search_and_tag(path):
     walkdir module to walk over the specified path and return a list of files
     under it and other will apply necessary tags to it.
     """
-    # TODO - Make sure that only files with extensions are considered when
-    # setting tags.
+
     files = search(path)
     tagged_files = tagged(files)
     with open('/tmp/tags.json', 'w') as f:
         f.write(json.dumps(tagged_files))
 
+
 def check_dir_exists(path):
+    """
+    This function checks if a directory exists at the path specified by the
+    user.
+    """
     if not os.path.isdir(path):
         return True
     return False
